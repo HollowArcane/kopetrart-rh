@@ -1,0 +1,102 @@
+.text-accent {
+  color: #1E88E5;
+}
+
+.bg-accent {
+  background-color: rgba(30, 136, 229, 0.2);
+}
+
+.fx__navbar {
+  position: sticky;
+  padding: 2rem 0;
+  height: 100dvh;
+  background-image: linear-gradient(#1E88E5, #1E88E5);
+  top: 0;
+}
+.fx__navbar-brand {
+  color: white;
+  text-align: center;
+  margin-bottom: 3rem;
+  border-bottom: solid white;
+  border-width: 0.5px;
+}
+.fx__navbar-brand a {
+  color: inherit;
+}
+.fx__navbar-section {
+  margin-bottom: 3rem;
+}
+.fx__navbar-subtitle {
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 0.1rem;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 1.25rem;
+  margin-left: 3rem;
+  margin-bottom: 0.75rem;
+}
+.fx__navbar-list {
+  list-style: none;
+  padding: 0;
+}
+.fx__navbar-list li {
+  position: relative;
+  margin-bottom: 0.75rem;
+}
+.fx__navbar-list li::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 0px;
+  background-color: white;
+  border-radius: 1rem 0 0 1rem;
+  transition: 0.3s;
+}
+.fx__navbar-list li i {
+  display: inline-block;
+  margin-right: 1.5rem;
+}
+.fx__navbar-list li:hover, .fx__navbar-list li.active {
+  background-color: rgba(30, 136, 229, 0.1);
+}
+.fx__navbar-list li:hover::before, .fx__navbar-list li.active::before {
+  width: 3px;
+}
+.fx__navbar-list li:hover a, .fx__navbar-list li.active a {
+  color: white;
+}
+.fx__navbar-item {
+  display: inline-block;
+  color: rgba(255, 255, 255, 0.7);
+  padding: 0.25rem 0 0.25rem 2rem;
+  width: 100%;
+}
+
+.search-bar {
+  width: 300px;
+}
+
+.file-link {
+  text-transform: none;
+}
+
+#container {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  min-height: 100dvh;
+}
+#container main .chart-wrap {
+  height: 320px;
+}
+#container main .file-link i {
+  font-size: 2rem;
+}
+#container main table th {
+  text-transform: uppercase;
+  color: rgb(150, 150, 150);
+}
+#container main table .profile p {
+  font-size: 0.75rem;
+}
+
+/*# sourceMappingURL=style.css.map */

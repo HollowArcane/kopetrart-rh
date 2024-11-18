@@ -1,0 +1,71 @@
+.pf__navbar
+    &
+        position: sticky
+        top: 0
+        
+        box-sizing: border-box
+
+        width: width
+        height: 100dvh
+
+        padding: 4rem 0
+        background-image: linear-gradient(#ee7724, #d8363a, #dd3675, #b44593)
+
+    &-brand
+        &
+            text-align: center
+        a
+            color: $color-white
+
+    &-section
+        margin-top: 3rem        
+
+    &-subtitle
+        text-transform: uppercase
+        font-weight: bold
+        letter-spacing: .1rem
+        color: color.adjust($color-white, $alpha: -.5)
+
+        margin-left: 3rem
+        font-size: 1rem
+
+    &-item
+        &
+            display: inline-block
+            color: $color-white
+            opacity: .9
+            padding: .5rem 0 .5rem 2rem
+            width: 100%
+
+        i
+            display: inline-grid
+            place-items: center
+            width: 1rem
+            margin-right: .75rem
+    
+    &-list
+        margin: 0
+        padding: 0
+
+    li
+        &
+            position: relative 
+
+        &::before
+            content: ''
+            position: absolute
+            inset: 0
+            width: 0px
+            
+            background-color: $color-white
+            border-radius: 1rem 0 0 1rem
+            
+            transition: .3s 
+
+        &:hover, &.active
+            &
+                background-color: $color-white-alpha-1
+
+            &::before
+                width: 3px
+                color: $color-white

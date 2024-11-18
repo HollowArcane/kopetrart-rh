@@ -1,0 +1,220 @@
+@font-face {
+  font-family: "Rubik";
+  src: url("../font/Rubik-VariableFont_wght.ttf") format(".ttf");
+}
+* {
+  font-family: "Rubik" sans-serif;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  min-height: 100dvh;
+}
+
+img {
+  max-width: 100%;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  margin: 0;
+}
+
+.bg-lightgrey {
+  background-color: rgb(240, 240, 240);
+}
+
+.pop-left {
+  animation: pop-left 0.5s ease-out;
+}
+
+.pop-right {
+  animation: pop-right 0.5s ease-out;
+}
+
+.slide-down {
+  animation: slide-down 0.3s ease-out;
+}
+
+@keyframes pop-left {
+  from {
+    translate: -30px 0;
+  }
+  to {
+    translate: 0 0;
+  }
+}
+@keyframes pop-right {
+  from {
+    translate: 30px 0;
+  }
+  to {
+    translate: 0 0;
+  }
+}
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    translate: 0 -30px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+.rh__stack {
+  display: grid;
+  grid-template-areas: "stack";
+  width: 100%;
+  height: 100%;
+}
+
+.rh__stack > * {
+  grid-area: stack;
+}
+
+.rh__login-background {
+  width: 100%;
+  height: 100dvh;
+  display: grid;
+  grid-template-columns: minmax(600px, 50%) 1fr;
+  overflow-x: hidden;
+}
+.rh__login-background > div:nth-child(1) {
+  background-image: url("/app/img/login-background.jpg");
+  background-size: cover;
+  background-position: center;
+}
+
+.rh__login-container {
+  width: 500px;
+}
+.rh__login-container > * {
+  height: 600px;
+  opacity: 0.9;
+  filter: blur(2px);
+  translate: 20rem 4rem;
+  z-index: 1;
+}
+.rh__login-container > .active {
+  opacity: 1;
+  filter: blur(0px);
+  translate: 0;
+  z-index: 2;
+}
+
+.rh__chatbox {
+  width: 400px;
+  align-self: end;
+  justify-self: end;
+  margin: 2rem;
+}
+.rh__chatbox-body {
+  height: 300px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.pf__navbar {
+  position: sticky;
+  top: 0;
+  box-sizing: border-box;
+  width: width;
+  height: 100dvh;
+  padding: 4rem 0;
+  background-image: linear-gradient(#ee7724, #d8363a, #dd3675, #b44593);
+}
+.pf__navbar-brand {
+  text-align: center;
+}
+.pf__navbar-brand a {
+  color: white;
+}
+.pf__navbar-section {
+  margin-top: 3rem;
+}
+.pf__navbar-subtitle {
+  text-transform: uppercase;
+  font-weight: bold;
+  letter-spacing: 0.1rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin-left: 3rem;
+  font-size: 1rem;
+}
+.pf__navbar-item {
+  display: inline-block;
+  color: white;
+  opacity: 0.9;
+  padding: 0.5rem 0 0.5rem 2rem;
+  width: 100%;
+}
+.pf__navbar-item i {
+  display: inline-grid;
+  place-items: center;
+  width: 1rem;
+  margin-right: 0.75rem;
+}
+.pf__navbar-list {
+  margin: 0;
+  padding: 0;
+}
+.pf__navbar li {
+  position: relative;
+}
+.pf__navbar li::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 0px;
+  background-color: white;
+  border-radius: 1rem 0 0 1rem;
+  transition: 0.3s;
+}
+.pf__navbar li:hover, .pf__navbar li.active {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.pf__navbar li:hover::before, .pf__navbar li.active::before {
+  width: 3px;
+  color: white;
+}
+
+#container {
+  display: grid;
+  grid-template-columns: 250px 1fr;
+  min-height: 100dvh;
+  background-color: #f6f6f6;
+}
+
+.rh__notification-wrap {
+  display: none;
+  position: absolute;
+  top: calc(100% + 2rem);
+  right: 0;
+  width: 400px;
+  height: 200px;
+  overflow-y: scroll;
+}
+.rh__notification-wrap.show {
+  display: block;
+}
+.rh__notification {
+  position: relative;
+}
+.rh__notification-wrap > a, .rh__notification-wrap > a:hover {
+  color: inherit;
+}
+.rh__notification-item {
+  transition: 0.1s;
+}
+.rh__notification-item:hover {
+  background-color: rgb(250, 250, 250);
+}
+
+/*# sourceMappingURL=style.css.map */

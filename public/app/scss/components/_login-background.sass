@@ -1,0 +1,32 @@
+.rh__login-background
+    &
+        width: 100%
+        height: 100dvh
+
+        display: grid
+        grid-template-columns: minmax(600px, 50%) 1fr
+
+        overflow-x: hidden
+
+    & > div:nth-child(1)
+        background-image: $login-background-image
+        background-size: cover
+        background-position: center
+
+.rh__login-container
+    &
+        width: 500px
+
+    & > *
+        height: 600px
+        opacity: .9
+        filter: blur(2px)
+        translate: 20rem 4rem
+        z-index: 1
+
+    & > .active
+        opacity: 1
+        filter: blur(0px)
+        translate: 0
+        z-index: 2
+

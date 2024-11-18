@@ -1,0 +1,83 @@
+cv_id,id_cv,candidat_name,poste,date_depot_dossier,interests,qualities,educations,experiences,adequate,potentiel
+7,5,Lita,Developer,2024-11-14,"Danse, Football","Integrite, Ponctuel","BACC, Licence","Dev (24.00 months), Manager (12.00 months), RH (5.00 months)",0,1
+cv_id,id_cv,candidat_name,poste,date_depot_dossier,interests,qualities,educations,experiences,adequate,potentiel
+8,6,Alex,Data Analyst,2024-11-10,"Cycling, Reading","Analytical, Reliable","Licence, Master","Analyst (36.00 months), Researcher (18.00 months)",1,1
+9,7,Jordan,Marketing Specialist,2024-11-09,"Photography, Blogging","Creative, Sociable","BACC, Licence","Marketing (30.00 months), Sales (15.00 months)",1,0
+10,8,Taylor,Web Developer,2024-11-08,"Gaming, Music","Efficient, Detail-oriented","Diploma, Licence","Web Dev (18.00 months), Frontend (10.00 months)",1,1
+11,9,Riley,Product Manager,2024-11-07,"Travel, Sports","Organized, Strategic","BACC, Master","Management (24.00 months), Sales (20.00 months)",0,1
+12,10,Morgan,Sales Manager,2024-11-06,"Networking, Fitness","Persuasive, Leader","Licence","Sales (48.00 months), Marketing (36.00 months)",1,1
+13,11,Casey,Designer,2024-11-05,"Drawing, Sculpting","Creative, Artistic","Licence","Design (30.00 months), UI/UX (15.00 months)",1,0
+14,12,Jamie,Accountant,2024-11-04,"Chess, Reading","Analytical, Trustworthy","BACC, Licence","Accounting (24.00 months), Audit (12.00 months)",1,1
+15,13,Robin,Consultant,2024-11-03,"Public Speaking, Writing","Insightful, Communicative","BACC, Master","Consulting (30.00 months), Project Management (20.00 months)",1,1
+16,14,Shawn,Network Engineer,2024-11-02,"Hiking, Video Games","Technical, Problem-Solver","Licence","Network Management (36.00 months), IT Support (18.00 months)",1,1
+17,15,Kelly,Data Scientist,2024-11-01,"Programming, Machine Learning","Innovative, Focused","Master","Data Analysis (24.00 months), Machine Learning (12.00 months)",1,1
+18,16,Avery,HR Specialist,2024-10-30,"Volunteering, Cooking","Empathetic, Organized","BACC","HR (20.00 months), Training (10.00 months)",1,0
+19,17,Drew,Operations Manager,2024-10-28,"Chess, Gardening","Strategic, Leader","Master","Operations (40.00 months), Logistics (20.00 months)",1,1
+20,18,Toni,Content Writer,2024-10-27,"Writing, Reading","Creative, Deadline-Oriented","Licence","Writing (24.00 months), Editing (12.00 months)",1,0
+21,19,Quinn,Business Analyst,2024-10-26,"Finance, Data Analysis","Analytical, Efficient","Licence, Master","Analysis (36.00 months), Finance (18.00 months)",1,1
+22,20,Sam,Full Stack Developer,2024-10-25,"Coding, Running","Adaptable, Technical","Licence","Development (24.00 months), Backend (12.00 months)",0,1
+23,21,Terry,UX Designer,2024-10-24,"Design, Reading","Innovative, Creative","Diploma, Licence","UX (18.00 months), Research (12.00 months)",1,1
+24,22,Chris,Software Engineer,2024-10-23,"Coding, Music","Technical, Detail-Oriented","BACC, Master","Software Development (30.00 months), Project Management (10.00 months)",1,1
+25,23,Kai,Support Engineer,2024-10-22,"Customer Service, Technology","Patient, Problem-Solver","Licence","Support (24.00 months), Troubleshooting (12.00 months)",1,0
+26,24,Lee,Quality Assurance,2024-10-21,"Testing, Gaming","Meticulous, Reliable","Licence","Testing (20.00 months), QA (15.00 months)",1,1
+27,25,Dana,Data Engineer,2024-10-20,"Data Science, Music","Analytical, Detail-Oriented","Licence, Master","Data Engineering (28.00 months), Data Management (10.00 months)",1,1
+28,26,Kris,Project Coordinator,2024-10-19,"Organization, Volunteering","Leader, Efficient","BACC","Coordination (26.00 months), Event Management (8.00 months)",1,0
+29,27,Pat,Mobile Developer,2024-10-18,"Gaming, Coding","Technical, Adaptable","Diploma","Mobile Dev (24.00 months), UX Design (8.00 months)",0,1
+30,28,Remy,Product Designer,2024-10-17,"Photography, Art","Creative, Innovative","Licence","Design (24.00 months), UI/UX (10.00 months)",1,0
+31,29,Lou,AI Specialist,2024-10-16,"Machine Learning, Science","Innovative, Technical","Master","AI (18.00 months), Data Science (14.00 months)",1,1
+32,30,Reese,Front-End Developer,2024-10-15,"Gaming, Coding","Detail-Oriented, Creative","Licence","Frontend Dev (20.00 months), UI Design (10.00 months)",1,0
+33,31,Dale,Legal Advisor,2024-10-14,"Reading, Debating","Analytical, Decisive","Master","Legal Consulting (24.00 months), Compliance (12.00 months)",1,1
+cv_id,id_cv,candidat_name,poste,date_depot_dossier,interests,qualities,educations,experiences,adequate,potentiel
+34,32,Blake,Financial Analyst,2024-10-13,"Investing, Traveling","Analytical, Organized","Licence, Master","Finance (36.00 months), Data Analysis (24.00 months)",1,1
+35,33,Jess,HR Manager,2024-10-12,"Reading, Public Speaking","Empathetic, Organized","BACC, Licence","HR (48.00 months), Recruitment (30.00 months)",1,1
+36,34,Taylor,Software Architect,2024-10-11,"Programming, Mentoring","Visionary, Problem-Solver","Licence, Master","Development (60.00 months), Architecture (24.00 months)",1,1
+37,35,Morgan,Customer Service,2024-10-10,"Volunteering, Sports","Patient, Communicative","BACC","Customer Support (24.00 months), Sales (12.00 months)",1,0
+38,36,Harper,Data Engineer,2024-10-09,"Data Science, Hiking","Detail-Oriented, Analytical","Master","Data Engineering (40.00 months), Software Development (20.00 months)",1,1
+39,37,Charlie,Project Manager,2024-10-08,"Cooking, Reading","Organized, Strategic","Licence, Master","Project Management (50.00 months), Operations (20.00 months)",1,1
+40,38,Jordan,Full Stack Developer,2024-10-07,"Gaming, Running","Flexible, Technical","Licence","Frontend Dev (36.00 months), Backend Dev (24.00 months)",1,1
+41,39,Avery,Social Media Manager,2024-10-06,"Photography, Blogging","Creative, Communicative","BACC, Licence","Marketing (20.00 months), Social Media (10.00 months)",0,1
+42,40,Parker,Graphic Designer,2024-10-05,"Drawing, Digital Art","Artistic, Detail-Oriented","Diploma","Graphic Design (36.00 months), UI Design (12.00 months)",1,0
+43,41,Drew,IT Support Specialist,2024-10-04,"Gaming, Technology","Problem-Solver, Patient","Diploma, BACC","IT Support (28.00 months), Network Support (12.00 months)",1,1
+44,42,Alex,Content Strategist,2024-10-03,"Writing, Traveling","Creative, Strategic","Licence","Content Development (24.00 months), SEO (8.00 months)",1,1
+45,43,Jamie,Software Developer,2024-10-02,"Coding, Chess","Efficient, Logical","BACC, Licence","Frontend Dev (30.00 months), Full Stack (15.00 months)",1,0
+46,44,Robin,HR Coordinator,2024-10-01,"People Management, Volunteering","Organized, Empathetic","Licence","HR (20.00 months), Recruitment (10.00 months)",0,1
+47,45,Kendall,Business Development,2024-09-30,"Sales, Traveling","Persuasive, Goal-Oriented","Licence","Sales (24.00 months), Business Dev (15.00 months)",1,1
+48,46,Toni,Supply Chain Manager,2024-09-29,"Logistics, Reading","Detail-Oriented, Leader","Master","Supply Chain (36.00 months), Logistics (24.00 months)",1,1
+49,47,Pat,Operations Coordinator,2024-09-28,"Teamwork, Strategy Games","Organized, Reliable","BACC, Licence","Operations (28.00 months), Coordination (15.00 months)",1,0
+50,48,Dana,Machine Learning Engineer,2024-09-27,"Programming, Research","Innovative, Focused","Master","Machine Learning (32.00 months), Data Science (20.00 months)",1,1
+51,49,Reese,Marketing Analyst,2024-09-26,"Marketing, Photography","Creative, Analytical","Licence","Marketing (18.00 months), Data Analysis (12.00 months)",1,0
+52,50,Louise,Product Developer,2024-09-25,"Innovation, Technology","Creative, Detail-Oriented","Licence","Product Dev (30.00 months), Project Mgmt (18.00 months)",1,1
+53,51,Dale,Financial Planner,2024-09-24,"Finance, Reading","Analytical, Detail-Oriented","Licence, Master","Financial Planning (36.00 months), Wealth Mgmt (15.00 months)",1,1
+54,52,Charlie,Backend Developer,2024-09-23,"Programming, Gaming","Technical, Logical","Licence","Backend Dev (24.00 months), API Dev (12.00 months)",1,0
+55,53,Rory,Sales Executive,2024-09-22,"Public Speaking, Networking","Persuasive, Driven","BACC","Sales (20.00 months), Customer Service (8.00 months)",1,1
+56,54,Shawn,HR Specialist,2024-09-21,"Reading, Volunteering","Empathetic, Organized","Licence","HR (24.00 months), Payroll (10.00 months)",1,0
+57,55,Casey,Software Tester,2024-09-20,"Testing, Puzzles","Meticulous, Detail-Oriented","Diploma, BACC","Testing (24.00 months), QA (12.00 months)",1,1
+58,56,Riley,Network Administrator,2024-09-19,"Networking, Coding","Problem-Solver, Technical","Licence","Networking (30.00 months), IT Support (18.00 months)",1,1
+59,57,Jesse,Customer Success,2024-09-18,"Customer Relations, Fitness","Communicative, Organized","BACC, Licence","Customer Success (24.00 months), Sales (10.00 months)",1,0
+cv_id,id_cv,candidat_name,poste,date_depot_dossier,interests,qualities,educations,experiences,adequate,potentiel
+60,58,Blair,Data Analyst,2024-09-17,"Data Science, Reading","Analytical, Thorough","Licence, Master","Data Analysis (30.00 months), Statistics (12.00 months)",1,1
+61,59,Quinn,Content Writer,2024-09-16,"Writing, Cooking","Creative, Detail-Oriented","Licence","Content Writing (20.00 months), Editing (8.00 months)",1,0
+62,60,Ashley,Frontend Developer,2024-09-15,"Design, Photography","Artistic, Efficient","Diploma, Licence","Frontend Dev (18.00 months), Graphic Design (10.00 months)",1,1
+63,61,Reagan,HR Coordinator,2024-09-14,"Volunteering, Public Speaking","Empathetic, Reliable","BACC","HR (24.00 months), Recruitment (12.00 months)",1,1
+64,62,Cameron,Database Administrator,2024-09-13,"Gaming, Coding","Technical, Detail-Oriented","Licence","Database Mgmt (30.00 months), Data Backup (15.00 months)",1,1
+65,63,Marley,UX Designer,2024-09-12,"Art, Hiking","Creative, Problem-Solver","Licence","UX Design (18.00 months), UI Research (8.00 months)",1,0
+66,64,Alexis,Operations Assistant,2024-09-11,"Logistics, Strategy Games","Organized, Strategic","BACC","Operations (24.00 months), Logistics (10.00 months)",1,1
+67,65,Blake,IT Consultant,2024-09-10,"Technology, Reading","Analytical, Problem-Solver","Licence, Master","IT Consulting (36.00 months), Project Mgmt (12.00 months)",1,1
+68,66,Kai,Customer Service,2024-09-09,"Traveling, Cooking","Patient, Communicative","Diploma","Customer Support (22.00 months), Sales (8.00 months)",1,0
+69,67,Harley,Software Engineer,2024-09-08,"Programming, Gaming","Technical, Logical","Licence","Software Dev (30.00 months), Full Stack (15.00 months)",1,1
+70,68,Logan,Product Owner,2024-09-07,"Product Development, Innovation","Strategic, Visionary","Licence","Product Mgmt (36.00 months), Agile (12.00 months)",1,1
+71,69,Jordan,Digital Marketer,2024-09-06,"Social Media, Blogging","Creative, Goal-Oriented","Licence","Marketing (20.00 months), SEO (10.00 months)",1,0
+72,70,Payton,Graphic Designer,2024-09-05,"Art, Photography","Artistic, Creative","Diploma","Graphic Design (30.00 months), Branding (15.00 months)",1,1
+73,71,River,Quality Assurance,2024-09-04,"Testing, Problem-Solving","Thorough, Reliable","Diploma, BACC","Testing (24.00 months), QA (10.00 months)",1,1
+74,72,Taylor,Data Scientist,2024-09-03,"Machine Learning, Coding","Analytical, Detail-Oriented","Master","Data Science (36.00 months), Machine Learning (24.00 months)",1,1
+75,73,Phoenix,Project Coordinator,2024-09-02,"Organization, Cooking","Organized, Communicative","Licence","Project Mgmt (28.00 months), Coordination (12.00 months)",1,0
+76,74,Emerson,Business Analyst,2024-09-01,"Finance, Data Analysis","Detail-Oriented, Analytical","BACC, Licence","Business Analysis (24.00 months), Finance (10.00 months)",1,1
+77,75,Angel,Backend Developer,2024-08-31,"Programming, Puzzles","Technical, Problem-Solver","Licence","Backend Dev (24.00 months), Database Mgmt (12.00 months)",1,1
+78,76,Remy,Sales Consultant,2024-08-30,"Networking, Traveling","Persuasive, Goal-Oriented","BACC","Sales (22.00 months), Marketing (10.00 months)",1,0
+79,77,Luca,Supply Chain Analyst,2024-08-29,"Logistics, Travel","Analytical, Detail-Oriented","Licence","Supply Chain (30.00 months), Operations (15.00 months)",1,1
+80,78,Elliot,Mobile Developer,2024-08-28,"Coding, Gaming","Adaptable, Technical","Diploma","Mobile Dev (18.00 months), UX Design (10.00 months)",0,1
+81,79,Micah,Legal Advisor,2024-08-27,"Debating, Reading","Decisive, Analytical","Master","Legal (24.00 months), Compliance (12.00 months)",1,1
+82,80,Devin,Research Analyst,2024-08-26,"Research, Writing","Analytical, Thorough","Licence","Research (24.00 months), Analysis (8.00 months)",1,0
+83,81,Charlie,Financial Controller,2024-08-25,"Finance, Investing","Organized, Analytical","Master","Finance (30.00 months), Accounting (12.00 months)",1,1
+84,82,Sasha,HR Analyst,2024-08-24,"People Management, Coaching","Empathetic, Organized","Licence","HR (20.00 months), Payroll (10.00 months)",1,0
+85,83,Casey,Product Designer,2024-08-23,"Design, Innovation","Creative, Strategic","Licence","Product Design (24.00 months), Research (12.00 months)",1,1

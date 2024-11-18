@@ -1,0 +1,29 @@
+.rh__notification
+    &-wrap
+        display: none
+
+        position: absolute
+        top: calc(100% + 2rem)
+        right: 0
+
+        width: 400px
+        height: 200px
+
+        overflow-y: scroll
+
+    &-wrap.show
+        display: block
+
+    &
+        position: relative
+
+    &-wrap > a, &-wrap > a:hover
+        color: inherit
+
+    &-item
+        transition: .1s
+
+    &-item:hover
+        background-color: rgb(250, 250, 250)
+
+

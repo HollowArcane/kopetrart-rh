@@ -1,0 +1,1 @@
+<a class="btn btn-light text-info @isset($class) {{ $class }} @endisset" href='{{ $href }}'> <i class="fa fa-pencil"></i> {{ $slot ?? '' }} </a>

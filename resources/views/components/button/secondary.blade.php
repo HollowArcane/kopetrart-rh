@@ -1,0 +1,1 @@
+<button id="{{ $id ?? '' }}" data-mdb-button-init data-mdb-ripple-init type="button" onclick="{{ $onclick ?? '' }}" class="btn {{ ($block ?? false) ? 'btn-block': '' }} btn-secondary"> {{ $slot }} </button>

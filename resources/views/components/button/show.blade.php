@@ -1,0 +1,1 @@
+<a class="btn btn-light text-success @isset($class) {{ $class }} @endisset" href="{{ $href }}"> <i class="fa fa-search"></i> {{ $slot ?? '' }} </a>

@@ -1,0 +1,74 @@
+@use 'sass:color'
+.fx__navbar
+    &
+        position: sticky
+        padding: 2rem 0
+        height: 100dvh
+        background-image: linear-gradient($color-t, $color-t2)
+        top: 0
+
+    &-brand
+        &
+            color: $color-p
+            text-align: center
+
+            margin-bottom: 3rem
+            border-bottom: solid white
+            border-width: .5px
+        a
+            color: inherit
+
+    &-section
+        margin-bottom: 3rem
+
+    &-subtitle
+        text-transform: uppercase
+        font-weight: bold
+        letter-spacing: .1rem
+
+        color: rgb(255, 255, 255, .4)
+
+        font-size: 1.25rem
+        margin-left: 3rem
+        margin-bottom: .75rem
+
+    &-list
+        list-style: none
+        padding: 0
+
+    &-list li
+        &
+            position: relative
+            margin-bottom: .75rem
+
+        &::before
+            content: ''
+            position: absolute
+            inset: 0
+            width: 0px
+
+            background-color: white
+            border-radius: 1rem 0 0 1rem
+
+            transition: .3s
+
+        i
+            display: inline-block
+            margin-right: 1.5rem
+
+        &:hover, &.active
+            &
+                background-color: color.adjust($color-t, $alpha: -.9)
+
+            &::before
+                width: 3px
+
+            a
+                color: $color-p
+
+    &-item
+        display: inline-block
+        color: color.adjust($color-p, $alpha: -.3)
+        padding: .25rem 0 .25rem 2rem
+        width: 100%
+

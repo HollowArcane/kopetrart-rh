@@ -1,0 +1,5 @@
+DELETE FROM denormalized_cv_interests;
+DELETE FROM denormalized_cv_qualities;
+DELETE FROM denormalized_cv_education
+DELETE FROM denormalized_cv_experiences;
+DELETE FROM denormalized_cv;

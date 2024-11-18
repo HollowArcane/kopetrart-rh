@@ -1,0 +1,97 @@
+1. Data Overview:
+- Initial dataset: 82 rows with 11 columns
+- After preprocessing: 79 rows (slight reduction due to data cleaning)
+- Feature matrix: 79 rows × 93 columns (meaning you have many one-hot encoded features)
+
+2. Model Performance:
+
+For "Adequate" prediction:
+- Accuracy: 88%
+- Class imbalance: Your data is imbalanced (3 negative cases vs 13 positive cases)
+- Very good precision for class 0 (1.00) but low recall (0.33)
+- Strong performance for class 1 (precision: 0.87, recall: 1.00)
+- Confusion Matrix shows:
+  * 1 true negative, 2 false positives
+  * 0 false negatives, 13 true positives
+
+For "Potentiel" prediction:
+- Accuracy: 81%
+- Similar class imbalance (5 negative cases vs 11 positive cases)
+- Good precision for class 0 (1.00) but low recall (0.40)
+- Good performance for class 1 (precision: 0.79, recall: 1.00)
+- Confusion Matrix shows:
+  * 2 true negatives, 3 false positives
+  * 0 false negatives, 11 true positives
+
+3. Most Important Features:
+
+For "Adequate":
+1. quality_0 (21.1%)
+2. poste_encoded (8.4%)
+3. interest_40 (7.2%)
+4. total_experience_months (7.1%)
+5. interest_4 (6.3%)
+
+For "Potentiel":
+1. total_experience_months (11.7%)
+2. poste_encoded (9.7%)
+3. education_level (6.4%)
+4. quality_4 (6.4%)
+5. month (4.6%)
+
+Key Considerations and Recommendations:
+
+1. Class Imbalance:
+- Your dataset is imbalanced for both targets
+- Consider using techniques like SMOTE or class weights to balance the training data
+
+2. Sample Size:
+- With only 79 samples, the model might not generalize well
+- Consider collecting more data if possible
+- Use cross-validation instead of a single train-test split to get more reliable performance metrics
+
+3. Model Bias:
+- Both models have perfect recall for class 1 but struggle with class 0
+- This suggests possible overfitting to the majority class
+
+4. Feature Importance:
+- For "Adequate", soft skills (qualities) seem to be most important
+- For "Potentiel", experience and hard qualifications (education, position) are more important
+- Consider focusing data collection efforts on these important features
+
+
+
+
+------------------------------------------------------------------------------
+    
+    # csv_path = r'D:\Studies\ITU\S5\ORG301_Gestion-entreprise\code\Recrutements\sql\sql-nh\cv_data.csv'
+    
+    # try:
+    #     # Train models and save preprocessor
+    #     print("Training models...")
+    #     models, preprocessor = train_models(csv_path)
+    #     print("Models trained successfully")
+        
+    #     # replace this with the data from the formulaire
+    #     # rest api json format  
+    #     new_cv = {
+    #         'cv_id': 7,
+    #         'id_cv': 5,
+    #         'candidat_name': 'Lita',
+    #         'poste': 'Product Manager',
+    #         'date_depot_dossier': '2024-11-14',
+    #         'interests': 'Coaching',
+    #         'qualities': 'Empathetic',
+    #         'educations': 'Licence',
+    #         'experiences': 'HR (2.00 months)'
+    #     }
+        
+    #     print("\nMaking prediction for new CV...")
+    #     predictions = predict_cv(new_cv)
+        
+    #     # return the prediction to laravel controller
+    #     # insert the prediction in to the columns
+    #     print("Predictions:", predictions)
+        
+    # except Exception as e:
+    #     print(f"An error occurred: {e}")

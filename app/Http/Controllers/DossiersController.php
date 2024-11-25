@@ -4,16 +4,31 @@ namespace App\Http\Controllers;
 use App\Models\DossiersModel;
 use App\Models\Besoin_posteModel;
 use App\Models\Notification;
+use App\Models\Staff\Staff;
 use Illuminate\Http\Request;
-class DossiersController extends Controller {
-	public function index() {
+class DossiersController extends Controller
+{
+    private $list_view = 'pages.back-office.dossiers.index';
+    private $create_view = 'pages.back-office.dossiers.create';
+    private $edit_view = 'pages.back-office.dossiers.edit';
+
+    private $url = 'dossiers';
+
+	public function index()
+    {
 		$dossiers = DossiersModel::with('besoinPoste')->get();
-    	return view('dossiers.index', compact('dossiers'));
+    	return view($this->list_view, compact('dossiers'));
 	}
 
 	public function create() {
-		$besoin_poste = Besoin_posteModel::with('poste')->get();
-    	return view('dossiers.create', compact('besoin_poste'));
+		$raw_data = Besoin_posteModel::with('poste')->get();
+        $besoin_poste = [];
+        foreach($raw_data as $besoin)
+        {
+            $besoin_poste[$besoin->id] = $besoin->poste?->libelle;
+        }
+
+    	return view($this->create_view, compact('besoin_poste'));
 	}
 
 	public function store(Request $request) {
@@ -24,6 +39,14 @@ class DossiersController extends Controller {
 		$dossier->setId_besoin_poste($request->input('id_besoin_poste'));
 		$dossier->setDate_reception($request->input('date_reception'));
 		$dossier->setStatut('Nouveau'); // Statut par défaut lors de la création du dossier
+
+        $staff = Staff::get_or_create(
+            $request->input('candidat'),
+            null,
+            $request->input('email'),
+            $request->input('date-birth')
+        );
+        // TODO: map files to $staff
 
 		// Gestion de l'upload du CV
 		if ($request->hasFile('cv')) {
@@ -47,14 +70,14 @@ class DossiersController extends Controller {
         $notification->id_role = 5; // chargé de recrutement
         $notification->save();
 
-		return redirect()->route('dossiers.index')->with('success', 'Dossier créé avec succès.');
+		return redirect($this->url)->with('success', 'Dossier créé avec succès.');
 	}
 
 
 	public function edit($id) {
 		$dossier = DossiersModel::getDossierById($id);
 		$besoin_poste = Besoin_posteModel::getAllBesoin_poste();
-		return view('dossiers.edit', compact('dossier', 'besoin_poste'));
+		return view($this->edit_view, compact('dossier', 'besoin_poste'));
 	}
 	public function update(Request $request, $id) {
 		$dossiers = new DossiersModel();
@@ -67,13 +90,13 @@ class DossiersController extends Controller {
 		$dossiers->setCv($request->input('cv'));
 		$dossiers->setLettre_motivation($request->input('lettre_motivation'));
 		$dossiers->updateDossier();
-		return redirect()->route('dossiers.index')->with('success', 'Dossier mis à jour avec succès.');
+		return redirect($this->url)->with('success', 'Dossier mis à jour avec succès.');
 	}
 	public function destroy($id) {
 		$dossierModel = new DossiersModel();
 		$dossierModel->setId($id);
 		$dossierModel->deleteDossier();
-		return redirect()->route('dossiers.index')->with('success', 'Dossier supprimé avec succès.');
+		return redirect($this->url)->with('success', 'Dossier supprimé avec succès.');
 	}
 	public function refuser(Request $request, $id)
     {

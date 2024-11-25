@@ -60,7 +60,7 @@ class TestCandidateFileController
         ];
 
         // Generate PDF
-        $pdf = FacadePdf::loadView('pages.test.pdf', compact(
+        $pdf = FacadePdf::loadView('pages.back-office.test.pdf', compact(
             'test',
             'totalDuration',
             'totalCoefficient',

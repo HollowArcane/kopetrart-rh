@@ -14,10 +14,10 @@ use Illuminate\Support\Facades\DB;
 class TestController
 {
     private $url = '/test';
-    private $list_view = 'pages.test.list';
-    private $form1_view = 'pages.test.form1';
-    private $form2_view = 'pages.test.form2';
-    private $form3_view = 'pages.test.form3';
+    private $list_view = 'pages.back-office.test.list';
+    private $form1_view = 'pages.back-office.test.form1';
+    private $form2_view = 'pages.back-office.test.form2';
+    private $form3_view = 'pages.back-office.test.form3';
 
     /**
      * Display a listing of the resource.

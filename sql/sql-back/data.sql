@@ -1,3 +1,4 @@
+-- UTILISATEURS
 INSERT INTO role (id, libelle) VALUES
 (1, 'PDG'),
 (2, 'Responsable RH'),
@@ -7,6 +8,8 @@ INSERT INTO role (id, libelle) VALUES
 
 
 CREATE EXTENSION IF NOT EXISTS pgcrypto;
+
+
 
 
 INSERT INTO admin (username, password, id_profil) VALUES
@@ -81,3 +84,13 @@ INSERT INTO moyenne_comm (libelle) VALUES
 ('Journaux locaux'),
 ('Agences de recrutement'),
 ('Reseaux professionnels');
+
+
+-- PARTIE TEST
+INSERT INTO test_candidate_result(id, label) VALUES(1, 'Valide');
+INSERT INTO test_candidate_result(id, label) VALUES(2, 'Echec');
+INSERT INTO test_candidate_result(id, label) VALUES(3, 'En Attente');
+
+INSERT INTO test_point_importance(id, label) VALUES(1, 'Blocant');
+INSERT INTO test_point_importance(id, label) VALUES(2, 'Important');
+INSERT INTO test_point_importance(id, label) VALUES(3, 'Bonus');

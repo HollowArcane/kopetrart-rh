@@ -12,9 +12,9 @@ use Illuminate\Support\Facades\DB;
 class TestCandidateController
 {
     private $url = '/test-candidate';
-    private $list_view = 'pages.test-candidate.list';
-    private $form_view = 'pages.test-candidate.form';
-    private $score_view = 'pages.test-candidate.score';
+    private $list_view = 'pages.back-office.test-candidate.list';
+    private $form_view = 'pages.back-office.test-candidate.form';
+    private $score_view = 'pages.back-office.test-candidate.score';
     /**
      * Display a listing of the resource.
      */

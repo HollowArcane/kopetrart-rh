@@ -178,4 +178,7 @@ use App\Http\Controllers\Payroll\PayrollController;
 
     Route::get('/etat-de-paie', [PayrollController::class, 'index'])->name('payroll.index');
     Route::post('/etat-de-paie', [PayrollController::class, 'generate_payroll'])->name('payroll.generate');
+
+    Route::get('/payroll/fiche-de-paie/{id}', [PayrollController::class, 'staff_payroll'])->name('payroll.staff_payroll');
+    Route::get('/payroll/export-pdf/{id}', [PayrollController::class, 'export_payroll_pdf'])->name('payroll.export_pdf');
 }

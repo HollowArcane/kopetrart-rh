@@ -21,6 +21,8 @@ UPDATE smig SET next_amount = 350000.00 WHERE id = 1;
 UPDATE smig SET date_annonce_next_amount = '2025-02-10' WHERE id = 1;
 UPDATE smig SET date_effective_next_amount = '2025-05-10' WHERE id = 1;
 
+UPDATE staff SET d_salary = 250000.00 WHERE id = 3;
+
 --
 -- STAFF
 --

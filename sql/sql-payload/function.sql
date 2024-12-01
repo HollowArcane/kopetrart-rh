@@ -122,7 +122,14 @@
             ROUND(
                 CASE 
                     WHEN var_base_salary = 250000.00 
-                        THEN (SELECT (next_amount - previous_amount) FROM smig) + var_base_salary 
+                        THEN 
+                            (SELECT (next_amount - previous_amount) FROM smig) + 
+                            var_base_salary + 
+                            var_total_compensation + 
+                            var_rappel_salary + 
+                            var_total_overtime + 
+                            var_seniority_bonus + 
+                            var_performance_bonus
                     ELSE 
                         var_base_salary + 
                         var_total_compensation + 
@@ -183,12 +190,10 @@
         total_contributions NUMERIC(14, 2);
         revenue_imposable NUMERIC(14, 2);
     BEGIN
-        -- brut salary from fn_get_salary_brut
         SELECT res_monthly_gross_salary
         INTO salary_brut
         FROM fn_get_salary_brut(p_id_staff, p_date_reference);
 
-        --  total contributions from fn_cnaps_and_ostie
         SELECT res_total_contributions
         INTO total_contributions
         FROM fn_cnaps_and_ostie(p_id_staff, p_date_reference);

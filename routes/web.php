@@ -25,6 +25,14 @@ use App\Http\Controllers\Staff\ContratController;
 use App\Http\Controllers\Staff\MvtStaffContractController;
 use App\Http\Controllers\Staff\StaffController;
 
+use App\Http\Controllers\Absence\AbsenceController;
+use App\Http\Controllers\Overtime\StaffOvertimeController;
+use App\Http\Controllers\Staff\StaffCompensationController;
+use App\Http\Controllers\Bonus\PerformanceBonusController;
+use App\Http\Controllers\Impot\ImpotDueController;
+use App\Http\Controllers\Advance\SalaryAdvanceController;
+use App\Http\Controllers\Payroll\PayrollController;
+
 { // TRASH
     Route::get('/', function () {
     return view('auth.login');
@@ -157,4 +165,17 @@ use App\Http\Controllers\Staff\StaffController;
     Route::get('/front/test', [App\Http\Controllers\FrontOffice\TestController::class, 'index']);
     Route::get('/front/test/{id_test}/{id_cv}', [App\Http\Controllers\FrontOffice\TestController::class, 'edit']);
     Route::post('front/test/{id_test}/{id_cv}', [App\Http\Controllers\FrontOffice\TestController::class, 'update']);
+}
+
+
+{
+    Route::resource('absences', AbsenceController::class);
+    Route::resource('staff_overtimes', StaffOvertimeController::class);
+    Route::resource('staff_compensations', StaffCompensationController::class);
+    Route::resource('performance_bonuses', PerformanceBonusController::class);
+    Route::resource('impot_dues', ImpotDueController::class);
+    Route::resource('salary_advances', SalaryAdvanceController::class);
+
+    Route::get('/etat-de-paie', [PayrollController::class, 'index'])->name('payroll.index');
+    Route::post('/etat-de-paie', [PayrollController::class, 'generate_payroll'])->name('payroll.generate');
 }

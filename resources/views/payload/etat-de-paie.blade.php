@@ -64,17 +64,17 @@
                     <td>{{ $data['staff']->d_salary }}</td>
                     <td>{{ $data['absence_details']->detention_amount ?? 0 }}</td>
                     <td>{{ $data['salary_brut']->res_base_salary }}</td>
-                    <td>{{ $data['salary_brut']->res_total_compensation }}</td>
+                    <td>{{ $data['compensation'] }}</td>
                     <td>{{ $data['salary_brut']->res_rappel_salary }}</td>
                     <td>0</td>
-                    <td>{{ $data['total_heure_sup']->monthly_total_overtime_amount }}</td>
+                    <td>{{ $data['monthly_overtime']->monthly_total_overtime_amount ?? 0 }}</td>
                     <td>{{ $data['salary_brut']->res_monthly_gross_salary }}</td>
                     <td>{{ $data['cnaps_ostie']->res_cnaps_amount }}</td>
                     <td>0</td>
                     <td>{{ $data['cnaps_ostie']->res_ostie_amount }}</td>
                     <td>0</td>
                     <td>{{ $data['revenue_imposable'] }}</td>
-                    <td>0</td>
+                    <td>{{ $data['impot_du'] }}</td>
                     <td>0</td>
                     <td>0</td>
                     <td>0</td>

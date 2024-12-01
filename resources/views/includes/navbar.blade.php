@@ -210,6 +210,56 @@
         </ul>
     </li>
 
+    <!-- STAFF -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#staff-nav" data-bs-toggle="collapse" href="#">
+            <i class="bi bi-broadcast"></i><span>Staff</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="staff-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+            <li>
+                <a href="{{ route('absences.index') }}">
+                    <i class="bi bi-circle"></i><span>Staff absence</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ route('staff_overtimes.index')}}">
+                    <i class="bi bi-circle"></i><span>Staff overtime</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ route('staff_compensations.index')}}">
+                    <i class="bi bi-circle"></i><span>Staff compensation</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ route('performance_bonuses.index')}}">
+                    <i class="bi bi-circle"></i><span>Staff performance bonus</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ route('impot_dues.index')}}">
+                    <i class="bi bi-circle"></i><span>Impot Due</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ route('salary_advances.index')}}">
+                    <i class="bi bi-circle"></i><span>Staff salary advance</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ route('payroll.index')}}">
+                    <i class="bi bi-circle"></i><span>Etat de paie</span>
+                </a>
+            </li>
+        </ul>
+    </li>
+
     <!-- Logout -->
     <div class="dropdown">
         <li>

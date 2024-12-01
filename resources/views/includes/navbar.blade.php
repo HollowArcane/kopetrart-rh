@@ -55,6 +55,27 @@
             </li>
         </ul>
     </li>
+    <!-- Vacation Section -->
+    @if (in_array(session('role'), [3 /* RE */, 1 /* PDG */]))
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="/staff-vacation">
+            <i class="bi bi-people"></i><span> Congé </span></i>
+        </a>
+    </li>
+    @endif
+    <!-- Contract Section -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#contract-nav" data-bs-toggle="collapse" href="#">
+            <i class="bi bi-people"></i><span> Contrat </span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="contract-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+            <li>
+                <a href="/contract-breach">
+                    <i class="bi bi-circle"></i><span> Rupture de Contrat </span>
+                </a>
+            </li>
+        </ul>
+    </li>
 
     <!-- Promotion Section -->
     @if ($session->get('role') == 3 || $session->get('role') == 1)

@@ -44,7 +44,7 @@
             v_lib_staff s ON sv.id_staff = s.id;
 
 -- FUNCTIONS:
-    DROP FUNCTION fn_staff_vacation_status(var_today DATE);
+    DROP FUNCTION   (var_today DATE);
     CREATE OR REPLACE FUNCTION fn_staff_vacation_status(var_today DATE)
         RETURNS TABLE(id_staff INT, day_vacation_taken INT, months_working INT, day_vacation_left INT) AS $$
         BEGIN
@@ -125,9 +125,3 @@
         EXECUTE FUNCTION fn_b_staff_vacation();
 
 -- CONSTANTS:
-INSERT INTO staff_vacation(id_staff, date_start, date_end) VALUES(1, '2023-01-10', '2023-01-14');
-INSERT INTO staff_vacation(id_staff, date_start, date_end) VALUES(1, '2023-01-28', '2023-02-2');
-
-UPDATE staff_vacation SET date_validated = '2023-01-01';
-
-SELECT * FROM fn_staff_vacation_status('2023-01-11');

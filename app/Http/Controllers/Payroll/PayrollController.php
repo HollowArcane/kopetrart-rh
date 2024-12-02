@@ -186,6 +186,12 @@ class PayrollController extends Controller
             ->where('staff_id', $staff->id)
             ->sum('seniority_bonus');
 
+        
+        $absenceDetails = DB::table('v_detention_on_absence')
+            ->where('id_staff', $staff->id)
+            ->where('month_start', DB::raw("DATE_TRUNC('month', '".$ref_date."'::date)"))
+            ->first();
+
         return view ('payroll.fiche-de-paie',[
             'staff' => $staff,
             'ref_date' => $ref_date,
@@ -204,6 +210,7 @@ class PayrollController extends Controller
             'tranche4' => $tranche4,
             'tranche5' => $tranche5,
             'total_irsa' => $total_irsa,
+            'absence_details' => $absenceDetails,
             'total_retenue' => $total_retenue,
             'compensation' => $compensation,
             'net_a_payer' => $net_a_payer,

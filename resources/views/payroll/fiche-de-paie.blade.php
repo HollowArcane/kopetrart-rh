@@ -108,10 +108,25 @@
                                         @endphp
                                         
                                         @foreach([
-                                            ['label' => 'Valeur', 'amount' => $staff->d_salary],
-                                            ['label' => 'Absences déductibles', 'amount' => $daily_rate],
-                                            ['label' => 'Primes de rendement', 'amount' => $daily_rate],
-                                            ['label' => 'Primes d\'ancienneté', 'amount' => $seniority_bonus],
+                                            ['label' => 'Valeur', 'days' => 1, 'rate' => $staff->d_salary, 'amount' => $staff->d_salary],
+                                            [
+                                                'label' => 'Absences déductibles', 
+                                                'days' => ($absence_details->total_absence_days - $absence_details->day_vacation_left) ?? 0, 
+                                                'rate' => $daily_rate, 
+                                                'amount' => ($absence_details->total_absence_days - $absence_details->day_vacation_left) ? $daily_rate * ($absence_details->total_absence_days - $absence_details->day_vacation_left) : 0
+                                            ],
+                                            [
+                                                'label' => 'Primes de rendement', 
+                                                'days' => 1, 
+                                                'rate' => 0, 
+                                                'amount' => 0
+                                            ],
+                                            [
+                                                'label' => 'Primes d\'ancienneté', 
+                                                'days' => 1, 
+                                                'rate' => $seniority_bonus, 
+                                                'amount' => $seniority_bonus
+                                            ],
                                             [
                                                 'label' => 'Heures supplémentaires majorées de 30%', 
                                                 'hours' => $monthly_overtime && $monthly_overtime->total_first_8_hours ? $monthly_overtime->total_first_8_hours : 0,
@@ -143,15 +158,17 @@
                                                 'amount' => 0
                                             ],
                                             ['label' => 'Rappels sur période antérieure', 'amount' => $salary_brut->res_rappel_salary ?? 0],
-                                            ['label' => 'Droits de congés', 'amount' => $daily_rate],
-                                            ['label' => 'Droits de préavis', 'amount' => $daily_rate],
-                                            ['label' => 'Indemnités de licenciement', 'amount' => $daily_rate]
+                                            ['label' => 'Droits de congés', 'rate' => $daily_rate, 'amount' => 0],
+                                            ['label' => 'Droits de préavis', 'rate' => $daily_rate, 'amount' => 0],
+                                            ['label' => 'Indemnités de licenciement', 'rate' => $daily_rate, 'amount' => 0]
                                         ] as $item)
                                             <tr>
                                                 <td>{{ $item['label'] }}</td>
                                                 <td>
                                                     @if(isset($item['hours']))
                                                         {{ $item['hours'] }}
+                                                    @elseif(isset($item['days']))
+                                                        {{ $item['days'] }}
                                                     @else
                                                         @if($item['label'] === 'Valeur')
                                                             1 mois

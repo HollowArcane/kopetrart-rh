@@ -54,9 +54,9 @@
         SELECT
             cb.id,
             msc.id_staff,
-            cb.id_contract_breach_type,
             s.first_name,
             s.last_name,
+            s.date_birth,
             s.d_date_contract_start,
             cb.date_validated,
             cb.is_validated,
@@ -67,11 +67,15 @@
             s.d_id_staff_contract,
             sc.label AS staff_contract,
             cb.date_target,
-            cb.id_role
+            cb.id_role,
+            cb.id_contract_breach_type,
+            cbt.label AS contract_breach_type
         FROM
             contract_breach cb
         JOIN
             mvt_staff_contract msc ON cb.id_mvt_staff_contract = msc.id
+        JOIN
+            contract_breach_type cbt ON cb.id_contract_breach_type = cbt.id
         JOIN
             staff s ON msc.id_staff = s.id
         JOIN

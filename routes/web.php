@@ -145,6 +145,7 @@ use App\Http\Controllers\Staff\StaffVacationController;
 { // CONTRACT BREACH
     Route::get('/contract-breach', [ContractBreachController::class, 'index']);
     Route::get('/contract-breach/{id}', [ContractBreachController::class, 'accept']);
+    Route::get('/contract-breach/{id}/pdf', [ContractBreachController::class, 'pdf']);
     Route::get('/staff/{id}/contract-breach/create/{type}', [ContractBreachController::class, 'create']);
     Route::post('/staff/{id}/contract-breach', [ContractBreachController::class, 'store']);
     Route::delete('/contract-breach/{id}', [ContractBreachController::class, 'delete']);

@@ -41,6 +41,7 @@
                             @elseif ($staff->date_target == null && in_array(session('role'), [1 /* PDG */, 3 /* RE */]) && session('role') != $staff->id_role /* only target can validate operation */)
                                 <a class="btn btn-secondary text-primary" tooltip="Valider" href="/contract-breach/{{ $staff->id }}"> <i class="fa-solid fa-check"></i> </a>
                             @endif
+                            <a href="/contract-breach/{{ $staff->id }}/pdf" class="btn btn-secondary text-danger"><i class="fa fa-file-pdf"></i></a>
                         </td>
                     </tr>
                 @endforeach

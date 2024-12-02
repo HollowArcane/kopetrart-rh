@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Staff;
 use App\Http\Controllers\Controller;
 use App\Models\Staff\ContractBreach;
 use App\Models\Staff\Staff;
+use App\Models\Staff\StaffPositionTask;
 use App\Models\Staff\StaffVacation;
+use Barryvdh\DomPDF\Facade\Pdf;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Validation\ValidationException;
@@ -15,6 +17,7 @@ class ContractBreachController extends Controller
     public static $url = '/staff/{id}/contract-breach';
     private $index_view = 'pages.back-office.contract-breach.index';
     private $form_view = 'pages.back-office.contract-breach.form';
+    private $pdf_view = 'pages.back-office.contract-breach.pdf';
 
     public static function url(string $id_staff)
     { return '/staff/'.$id_staff.'/contract-breach'; }
@@ -27,7 +30,7 @@ class ContractBreachController extends Controller
             return abort(400, 'Invalid operation');
         }
         $staffs = ContractBreach::read_details()
-                    ->where('is_validated', '=', false)
+                    // ->where('is_validated', '=', false)
                     ->get();
 
         return view($this->index_view)->with('staffs', $staffs);
@@ -175,5 +178,19 @@ class ContractBreachController extends Controller
         { $salaries['salary_contract'] = 0; }
 
         return $salaries;
+    }
+
+    public function pdf($id)
+    {
+        $staff = ContractBreach::read_details()
+                    ->where('id', '=', $id)
+                    ->first();
+        if($staff == null)
+        { abort(404, 'Resource not found'); }
+        $pdf = Pdf::loadView($this->pdf_view, [
+            'staff' => $staff,
+            'tasks' => StaffPositionTask::read_by_position($staff->d_id_staff_position)->get()
+        ]);
+        return $pdf->stream('certificat_contract.pdf');
     }
 }

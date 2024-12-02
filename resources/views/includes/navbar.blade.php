@@ -53,6 +53,43 @@
                     <i class="bi bi-circle"></i><span>Candidat</span>
                 </a>
             </li>
+
+            <!-- STAFF -->
+            <li>
+                <a href="{{ route('absences.index') }}">
+                    <i class="bi bi-circle"></i><span>Absence</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ route('staff_overtimes.index')}}">
+                    <i class="bi bi-circle"></i><span>Heure supplémentaire</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ route('staff_compensations.index')}}">
+                    <i class="bi bi-circle"></i><span>Indémnité</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ route('performance_bonuses.index')}}">
+                    <i class="bi bi-circle"></i><span>Bonus de performance</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ route('impot_dues.index')}}">
+                    <i class="bi bi-circle"></i><span>Impot Du</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ route('salary_advances.index')}}">
+                    <i class="bi bi-circle"></i><span>Avance salarial</span>
+                </a>
+            </li>
         </ul>
     </li>
 
@@ -150,27 +187,6 @@
     </li>
     @endif
 
-    <!-- Contrat Section -->
-    @if ($session->get('role') == 2)
-    <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#contrat-nav" data-bs-toggle="collapse" href="#">
-            <i class="bi bi-file-earmark"></i><span>Contrat</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        {{-- <ul id="contrat-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
-            <li>
-                <a href="{{ url('contrat') }}">
-                    <i class="bi bi-circle"></i><span>Listes des contrats</span>
-                </a>
-            </li>
-            <li>
-                <a href="{{ url('contrat/showEssaiForm') }}">
-                    <i class="bi bi-circle"></i><span>Essai</span>
-                </a>
-            </li>
-        </ul> --}}
-    </li>
-    @endif
-
     <!-- Annonce Section -->
     @if ($session->get('role') == 4)
     <li class="nav-item">
@@ -194,21 +210,35 @@
 
     <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#annonce-nav" data-bs-toggle="collapse" href="#">
-            <i class="bi bi-broadcast"></i><span>Prediction CV</span><i class="bi bi-chevron-down ms-auto"></i>
+            <i class="bi bi-file-earmark-bar-graph"></i><span>Prediction CV</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="annonce-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
             <li>
                 <a href="{{ route('classification.create') }}">
-                    <i class="bi bi-circle"></i><span>Create</span>
+                    <i class="bi bi-plus-circle"></i><span>Create</span>
                 </a>
             </li>
             <li>
                 <a href="{{ route('classification.index') }}">
-                    <i class="bi bi-circle"></i><span>Liste</span>
+                    <i class="bi bi-plus-circle"></i><span>Liste</span>
                 </a>
             </li>
         </ul>
     </li>
+    
+    <!-- PAYROLL -->
+    <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#staff-nav" data-bs-toggle="collapse" href="#">
+            <i class="bi bi-wallet"></i><span>Paiement Employé</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="staff-nav" class="nav-content collapse" data-bs-parent="#sidebar-nav">
+            <li>
+                <a href="{{ route('payroll.index') }}">
+                    <i class="bi bi-plus-circle"></i><span>Etat de paie</span>
+                </a>
+            </li>
+        </ul>
+    </li>    
 
     <!-- Logout -->
     <div class="dropdown">

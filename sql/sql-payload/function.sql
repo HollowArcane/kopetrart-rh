@@ -168,14 +168,26 @@
             fsb.res_first_name,
             fsb.res_last_name,
             fsb.res_monthly_gross_salary,
-            ROUND(fsb.res_monthly_gross_salary * 0.01, 2) AS res_cnaps_amount, -- 1% of gross salary
-            ROUND(fsb.res_monthly_gross_salary * 0.01, 2) AS res_ostie_amount, -- 1% of gross salary
-            ROUND(fsb.res_monthly_gross_salary * 0.02, 2) AS res_total_contributions, -- Total (CNAPS + OSTIE)
+            -- Calculate CNAPS: 1% of gross salary capped at 20,000.00
+            CASE 
+                WHEN ROUND(fsb.res_monthly_gross_salary * 0.01, 2) > 20000.00 THEN 20000.00
+                ELSE ROUND(fsb.res_monthly_gross_salary * 0.01, 2)
+            END AS res_cnaps_amount,
+            -- Calculate OSTIE: 1% of gross salary
+            ROUND(fsb.res_monthly_gross_salary * 0.01, 2) AS res_ostie_amount,
+            -- Total contributions: CNAPS + OSTIE
+            ROUND(
+                CASE 
+                    WHEN ROUND(fsb.res_monthly_gross_salary * 0.01, 2) > 20000.00 THEN 20000.00
+                    ELSE ROUND(fsb.res_monthly_gross_salary * 0.01, 2)
+                END + ROUND(fsb.res_monthly_gross_salary * 0.01, 2), 2
+            ) AS res_total_contributions,
             fsb.res_reference_month
         FROM 
             fn_get_salary_brut(p_id_staff, p_date_reference) AS fsb;
     END;
     $$ LANGUAGE plpgsql;
+
 
 --
 -- fn_revenue_imposable

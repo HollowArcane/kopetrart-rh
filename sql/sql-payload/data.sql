@@ -37,5 +37,5 @@ INSERT INTO staff (id, first_name, last_name, email, date_birth, d_staff_status,
 VALUES (3, 'Bob', 'Martin', 'bob.martin@example.com', '1990-01-15', 2, 250000, 3, 3, 2, '2024-02-01', NULL);
 
 -- senior employee
-INSERT INTO staff (id, first_name, last_name, email, date_birth, d_staff_status, d_salary, d_id_staff_position, d_id_department, d_id_staff_contract, d_date_contract_start, d_date_contract_end)
-VALUES (4, 'Jean', 'Jean', 'jean.jean@example.com', '1975-01-15', 2, 3000000, 3, 3, 2, '2015-02-01', NULL);
+INSERT INTO staff (id, first_name, last_name, email, date_birth, d_staff_status, d_salary, d_id_staff_position, d_id_department, d_id_staff_contract, d_date_contract_start, d_date_contract_end) 
+VALUES (4, 'Jean', 'Jean', 'jean.jean@example.com', '1975-01-15', 2, 3000000, 3, 3, 2, '2015-02-01', NULL);  

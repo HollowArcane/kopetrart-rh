@@ -140,6 +140,12 @@ class PayrollController extends Controller
             ->where('period_start', DB::raw("DATE_TRUNC('month', '".$ref_date."'::date)"))
             ->first();
 
+        // amount
+        $monthly_overtime_amount = DB::table('v_monthly_overtime_amount')
+                ->where('id_staff', $staff->id)
+                ->where('month_start', DB::raw("DATE_TRUNC('month', '".$ref_date."'::date)"))
+                ->first();
+
         // cnaps and ostie
         $cnaps_ostie = DB::select('SELECT * FROM fn_cnaps_and_ostie(?, ?)', [$staff->id, $ref_date])[0];
 
@@ -175,6 +181,11 @@ class PayrollController extends Controller
         // deduce IRSA to net a payer : fix later
         $net_a_payer -= $total_irsa;
 
+        // retrieve the seniority bonus amount from `v_get_seniority_bonus_per_month`
+        $seniority_bonus = DB::table('v_get_seniority_bonus_per_month')
+            ->where('staff_id', $staff->id)
+            ->sum('seniority_bonus');
+
         return view ('payroll.fiche-de-paie',[
             'staff' => $staff,
             'ref_date' => $ref_date,
@@ -195,7 +206,9 @@ class PayrollController extends Controller
             'total_irsa' => $total_irsa,
             'total_retenue' => $total_retenue,
             'compensation' => $compensation,
-            'net_a_payer' => $net_a_payer
+            'net_a_payer' => $net_a_payer,
+            'seniority_bonus' => $seniority_bonus,
+            'monthly_overtime_amount' => $monthly_overtime_amount
         ]);
     }
 
@@ -292,6 +305,6 @@ class PayrollController extends Controller
 
         $filename = 'Fiche_de_paie_' . $staff->first_name . '_' . $staff->last_name . '_' . $ref_date->format('Y_m') . '.pdf';
 
-        return $pdf->download($filename);
+        return $pdf->stream($filename);
     }
 }

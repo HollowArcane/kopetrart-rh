@@ -182,7 +182,7 @@
                                             
                                             <td colspan="3" class="fw-bold text-end">Heures Supp</td>
                                             <td class="text-end fw-bold">
-                                                {{ number_format($overtimeEarnings, 2, ',', ' ') }}
+                                                {{ number_format($monthly_overtime_amount->monthly_total_overtime_amount ?? 0, 2) }}
                                             </td>
                                         </tr>
                                         <tr class="table-info">

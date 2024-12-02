@@ -21,9 +21,11 @@ use App\Http\Controllers\Test\TestController;
 
 use App\Http\Controllers\Classification\DenormalizedCvController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\Staff\ContractBreachController;
 use App\Http\Controllers\Staff\ContratController;
 use App\Http\Controllers\Staff\MvtStaffContractController;
 use App\Http\Controllers\Staff\StaffController;
+use App\Http\Controllers\Staff\StaffVacationController;
 
 use App\Http\Controllers\Absence\AbsenceController;
 use App\Http\Controllers\Overtime\StaffOvertimeController;
@@ -138,13 +140,33 @@ use App\Http\Controllers\Payroll\PayrollController;
     Route::get('/notification/{id}', [NotificationController::class, 'see'])->name('notification.see');
 }
 
-{ // STAFF & CONTRACT BREACH
+{ // CONTRACT
     Route::get('/staff', [ StaffController::class, 'index' ]);
+    Route::get('/staff/{id}', [ StaffController::class, 'show' ]);
     Route::get('/candidate', [ StaffController::class, 'candidate' ]);
 
-    Route::get(MvtStaffContractController::$url, [MvtStaffContractController::class, 'create']);
-    Route::post(MvtStaffContractController::$url, [MvtStaffContractController::class, 'store']);
-    Route::get(MvtStaffContractController::$url.'/pdf', [MvtStaffContractController::class, 'pdf']);
+    Route::get('/staff/{id}/contract', [MvtStaffContractController::class, 'create']);
+    Route::post('/staff/{id}/contract', [MvtStaffContractController::class, 'store']);
+    Route::get('/staff/{id}/contract/pdf', [MvtStaffContractController::class, 'pdf']);
+}
+
+{ // CONTRACT BREACH
+    Route::get('/contract-breach', [ContractBreachController::class, 'index']);
+    Route::get('/contract-breach/{id}', [ContractBreachController::class, 'accept']);
+    Route::get('/contract-breach/{id}/pdf', [ContractBreachController::class, 'pdf']);
+    Route::get('/staff/{id}/contract-breach/create/{type}', [ContractBreachController::class, 'create']);
+    Route::post('/staff/{id}/contract-breach', [ContractBreachController::class, 'store']);
+    Route::delete('/contract-breach/{id}', [ContractBreachController::class, 'delete']);
+    Route::get('/staff/{id}/contract-breach/{id_contract_breach_type}/salary/{today}/{date_expected}/{comment_status}', [ContractBreachController::class, 'salary_bonus']);
+}
+
+{ // STAFF VACATION
+    Route::get('/staff-vacation', [StaffVacationController::class, 'index']);
+    Route::get('/staff-vacation/create', [StaffVacationController::class, 'create']);
+    Route::get('/staff-vacation/{id}', [StaffVacationController::class, 'accept']);
+    Route::post('/staff-vacation', [StaffVacationController::class, 'store']);
+    Route::get('/staff/{id}/vacation/{today}', [StaffVacationController::class, 'vacation_available']);
+    Route::delete('/staff-vacation/{id}', [StaffVacationController::class, 'delete']);
 }
 
 { // FRONT OFFICE

@@ -5,8 +5,6 @@
         name="{{ $name }}"
         class="form-control mb-2 @error($error ?? $name) is-invalid @enderror"
         placeholder="{{ $placeholder ?? '' }}"
-    >
-    {{ $value ?? '' }}
-    </textarea>
+    >{{ $value ?? '' }}</textarea>
     <div class="invalid-feedback"> {{ $errors->first($error ?? $name) }} </div>
 </div>

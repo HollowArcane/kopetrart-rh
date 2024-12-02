@@ -32,7 +32,12 @@ class MvtStaffContractController extends Controller
             $contracts = StaffContract::options(3);
         }
         else
-        { $contracts = StaffContract::options(); }
+        {
+            $contracts = StaffContract::options();
+            // remove possibility to do trial contract if staff is not in trial phase anymore
+            if($staff->d_id_staff_contract != 3)
+            { unset($contracts[3]); }
+        }
 
         return view($this->form_view)->with([
             'staff' => $staff,
@@ -78,10 +83,10 @@ class MvtStaffContractController extends Controller
 
         $mvt_contract->save();
 
-        return redirect(StaffController::$url)->with('success', 'Contrat renouvelé avec succès');
+        return redirect(StaffController::$url)->with('success', $id_contract == 3 ? 'Contrat ajouté avec succès':'Contrat renouvelé avec succès');
     }
 
-    privaTe function do_additional_validation($staff, $id_contract, $date_min, $date_max)
+    private function do_additional_validation($staff, $id_contract, $date_min, $date_max)
     {
         // check contract does not intersect another existing contract
         $intersecting_contracts = MvtStaffContract::find_intersecting($staff->id, $date_min, $date_max);
@@ -105,7 +110,7 @@ class MvtStaffContractController extends Controller
         if($id_contract != 2 && $staff->d_date_contract_start != null && $contract->max_period_month >= 0)
         {
             // this functionality has been simplified for time reasons
-            $interval = (new DateTime($date_min))->diff(new DateTime($staff->d_date_contract_start));
+            $interval = (new DateTime($date_max))->diff(new DateTime($staff->d_date_contract_start));
             if ($interval->m + ($interval->y * 12) > $contract->max_period_month)
             {
                 throw ValidationException::withMessages([

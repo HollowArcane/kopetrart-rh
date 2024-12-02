@@ -78,9 +78,9 @@ class PayrollController extends Controller
             // add irsa to total retenue
             $totalRetenue += $total_irsa;
 
-            // deduce IRSA to net a payer : fix later  
-            $netAPayer -= $total_irsa;    
-            
+            // deduce IRSA to net a payer : fix later
+            $netAPayer -= $total_irsa;
+
             $payrollData[] = [
                 'staff' => $staff,
                 'salary_brut' => $salaryBrut,
@@ -171,8 +171,8 @@ class PayrollController extends Controller
                 ->where('id_staff', $staff->id)
                 ->whereRaw("DATE_TRUNC('month', date_compensation) = DATE_TRUNC('month', '".$ref_date."'::date)")
                 ->sum('amount');
-        
-        // total retenue 
+
+        // total retenue
         $total_retenue = $total_irsa + $cnaps_ostie->res_cnaps_amount + $cnaps_ostie->res_ostie_amount;
 
         // net a payer
@@ -209,7 +209,7 @@ class PayrollController extends Controller
             'net_a_payer' => $net_a_payer,
             'seniority_bonus' => $seniority_bonus,
             'monthly_overtime_amount' => $monthly_overtime_amount
-        ]); 
+        ]);
     }
 
     public function export_payroll_pdf($id)
@@ -273,8 +273,8 @@ class PayrollController extends Controller
                 ->where('id_staff', $staff->id)
                 ->whereRaw("DATE_TRUNC('month', date_compensation) = DATE_TRUNC('month', '".$ref_date."'::date)")
                 ->sum('amount');
-        
-        // total retenue 
+
+        // total retenue
         $total_retenue = $total_irsa + $cnaps_ostie->res_cnaps_amount + $cnaps_ostie->res_ostie_amount;
 
         // net a payer

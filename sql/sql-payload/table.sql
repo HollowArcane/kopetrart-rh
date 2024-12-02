@@ -50,12 +50,12 @@ CREATE TABLE staff_compensation (
 
 --
 -- SMIG
--- 
+--
 CREATE TABLE smig (
     id SERIAL PRIMARY KEY,
     previous_amount DECIMAL(10, 2) NOT NULL,        -- current amount of SMIG
     next_amount DECIMAL(10, 2) DEFAULT NULL,        -- new SMIG
-    date_start DATE NOT NULL,       
+    date_start DATE NOT NULL,
     date_annonce_next_amount DATE DEFAULT NULL,     -- annonce of the new SMIG
     date_effective_next_amount DATE DEFAULT NULL    -- `entrée en vigueur` of the next SMIG
 );
@@ -67,7 +67,7 @@ CREATE TABLE performance_bonus (
     id SERIAL PRIMARY KEY,
     id_staff INT NOT NULL REFERENCES staff(id),
     date_bonus DATE NOT NULL,
-    performance DECIMAL(10, 2) NOT NULL -- in percentage (e.g: 150%)     
+    performance DECIMAL(10, 2) NOT NULL -- in percentage (e.g: 150%)
 );
 
 --
@@ -87,5 +87,5 @@ CREATE TABLE salary_advance (
     id SERIAL PRIMARY KEY,
     id_staff INT NOT NULL REFERENCES staff(id),
     date_advance DATE NOT NULL,
-    amount DECIMAL(10, 2) NOT NULL    
+    amount DECIMAL(10, 2) NOT NULL
 );

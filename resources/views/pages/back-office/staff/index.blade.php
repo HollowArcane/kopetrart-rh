@@ -15,6 +15,7 @@
         <table class="table">
             <thead>
                 <tr>
+                    <th> Nº Matricule </th>
                     <th> Personnel </th>
                     <th> Poste </th>
                     <th> Département </th>
@@ -26,6 +27,7 @@
             <tbody>
                 @foreach($staffs as $staff)
                     <tr>
+                        <td> <a class="btn btn-secondary text-primary" href="/staff/{{ $staff->id }}"> {{ $staff->id }} </a> </td>
                         <td> {{ $staff->first_name }} {{ $staff->last_name }} </td>
                         <td> {{ $staff->staff_position }} </td>
                         <td> {{ $staff->department }} </td>

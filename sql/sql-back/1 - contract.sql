@@ -170,6 +170,32 @@
             mvt_staff_promotion
     ;
 
+    DROP VIEW v_lib_mvt_staff_promotion CASCADE;
+    CREATE OR REPLACE VIEW v_lib_mvt_staff_promotion AS
+        SELECT
+            msp.id,
+            msp.id_staff,
+            s.first_name,
+            s.last_name,
+            s.date_birth,
+            s.email,
+            s.d_staff_status,
+            msp.id_department,
+            d.label AS department,
+            msp.id_staff_position,
+            sp.label AS staff_position,
+            msp.salary,
+            msp.date
+        FROM
+            mvt_staff_promotion msp
+        JOIN
+            staff s ON msp.id_staff = s.id
+        JOIN
+            department d ON msp.id_department = d.id
+        JOIN
+            staff_position sp ON msp.id_staff_position = sp.id
+    ;
+
 -- TRIGGERS:
     DROP PROCEDURE p_staff_salary_position;
     CREATE OR REPLACE PROCEDURE p_staff_salary_position(
@@ -334,25 +360,28 @@
         DECLARE
             salary NUMERIC(14, 2);
             id_staff_position INT;
+            id_department INT;
         BEGIN
             IF TG_OP = 'UPDATE' OR TG_OP = 'INSERT' THEN
-                CALL p_staff_salary_position(NEW.id_staff, salary, id_staff_position);
+                CALL p_staff_salary_position(NEW.id_staff, salary, id_staff_position, id_department);
 
                 UPDATE staff
                 SET
                     d_salary = salary,
-                    d_id_staff_position = id_staff_position
+                    d_id_staff_position = id_staff_position,
+                    d_id_department = id_department
                 WHERE
                     id = NEW.id_staff;
             END IF;
 
             IF TG_OP = 'UPDATE' OR TG_OP = 'DELETE' THEN
-                CALL p_staff_salary_position(OLD.id_staff, salary, id_staff_position);
+                CALL p_staff_salary_position(OLD.id_staff, salary, id_staff_position, id_department);
 
                 UPDATE staff
                 SET
                     d_salary = salary,
-                    d_id_staff_position = id_staff_position
+                    d_id_staff_position = id_staff_position,
+                    d_id_department = id_department
                 WHERE
                     id = OLD.id_staff;
             END IF;

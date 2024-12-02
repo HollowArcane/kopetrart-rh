@@ -34,6 +34,7 @@ use App\Http\Controllers\Bonus\PerformanceBonusController;
 use App\Http\Controllers\Impot\ImpotDueController;
 use App\Http\Controllers\Advance\SalaryAdvanceController;
 use App\Http\Controllers\Payroll\PayrollController;
+use App\Http\Controllers\Staff\MvtStaffPromotionController;
 
 { // TRASH
     Route::get('/', function () {
@@ -148,6 +149,10 @@ use App\Http\Controllers\Payroll\PayrollController;
     Route::get('/staff/{id}/contract', [MvtStaffContractController::class, 'create']);
     Route::post('/staff/{id}/contract', [MvtStaffContractController::class, 'store']);
     Route::get('/staff/{id}/contract/pdf', [MvtStaffContractController::class, 'pdf']);
+
+    Route::get('/staff-promotion', [MvtStaffPromotionController::class, 'index']);
+    Route::get('/staff-promotion/{id_staff}/create', [MvtStaffPromotionController::class, 'create']);
+    Route::post('/staff-promotion/{id_staff}', [MvtStaffPromotionController::class, 'store']);
 }
 
 { // CONTRACT BREACH

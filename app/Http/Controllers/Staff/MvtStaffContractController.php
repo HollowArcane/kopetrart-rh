@@ -24,6 +24,10 @@ class MvtStaffContractController extends Controller
     public function create(string $id)
     {
         $staff = Staff::findOrFail($id);
+        if(!in_array(session('role'), [1 /* PDG */]))
+        {
+            abort(400, 'Invalid operation');
+        }
 
         // check if staff has not worked in the company yet
         if($staff->d_staff_status == null && Staff::require_trial())
@@ -52,6 +56,10 @@ class MvtStaffContractController extends Controller
     public function store(Request $request, string $id)
     {
         $staff = Staff::findOrFail($id);
+        if(!in_array(session('role'), [1 /* PDG */]))
+        {
+            abort(400, 'Invalid operation');
+        }
 
         $request->validate([
             'type_contrat' => 'required|exists:staff_contract,id',

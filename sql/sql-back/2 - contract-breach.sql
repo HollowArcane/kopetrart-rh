@@ -22,10 +22,7 @@
         salary_bonus NUMERIC(18, 2) NOT NULL,
         date_validated DATE NOT NULL, -- needed to compute additional salary when time for contract_breach has come
         is_validated BOOLEAN DEFAULT FALSE,
-        CHECK(id_contract_breach_type = 1 AND salary_bonus <= 0 OR salary_bonus >= 0),
-        CHECK(date_validated >= date_source),
-        CHECK(date_target IS NULL OR date_target >= date_source),
-        CHECK(date_target <= date_validated)
+        CHECK(id_contract_breach_type = 1 AND salary_bonus <= 0 OR salary_bonus >= 0)
     );
 
 -- VIEWS:

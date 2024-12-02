@@ -87,7 +87,9 @@ class ContractBreachController extends Controller
         ]);
 
         $salary = $request->input('salary');
-        $salary_min = array_sum($this->salary_bonus($staff->id, $request->input('id-contract-breach-type'), $request->input('date-source'), $request->input('date-expected'), $request->input('comment-status')));
+        $salaries = $this->salary_bonus($staff->id, $request->input('id-contract-breach-type'), $request->input('date-source'), $request->input('date-expected'), $request->input('comment-status'));
+
+        $salary_min = $salaries['salary_notice'] + $salaries['salary_contract'] + $salaries['salary_vacation'] ;
 
         if($salary < $salary_min)
         {
@@ -124,7 +126,7 @@ class ContractBreachController extends Controller
 
     public function accept(string $id)
     {
-        $contract_breach = ContractBreach::find($id);
+        $contract_breach = ContractBreach::findOrFail($id);
         if(session('role') != $contract_breach->id_role)
         {
             if(in_array(session('role'), [1 /* PDG */, 3 /* RE */]) && $contract_breach->date_target == null)

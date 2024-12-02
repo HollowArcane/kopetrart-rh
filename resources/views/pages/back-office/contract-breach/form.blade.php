@@ -114,7 +114,9 @@ function fetchSalary()
             const id = key.replace('_', '-');
             const span = document.getElementById(id);
             span.textContent = formatNumber(Math.abs(data[key]));
-            total += data[key];
+
+            if(key !== "vacation_available")
+            { total += data[key]; }
         }
 
         if(salaryAdditional !== null)

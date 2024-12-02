@@ -107,10 +107,10 @@
                                 <td>0</td>
                                 <td>0.00</td>
                                 <td>0.00</td>
-                                <td>0.00</td>
+                                <td>{{ number_format($data['total_irsa'], 2) }}</td>
                                 <td>{{ number_format($data['total_retenue'], 2) }}</td>
                                 <td>{{ number_format($data['salary_net'], 2) }}</td>
-                                <td>0.00</td>
+                                <td>{{ number_format($data['avance'], 2) }}</td>
                                 <td>{{ number_format($data['net_a_payer'], 2) }}</td>
                             </tr>
                         @endforeach

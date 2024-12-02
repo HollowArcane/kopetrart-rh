@@ -185,7 +185,7 @@
                                             </td>
                                         </tr>
                                         <tr class="table-info">
-                                            <td colspan="3" class="fw-bold text-end">Dont Heures Supplémentaires</td>
+                                            <td colspan="3" class="fw-bold text-end">Heures Supplémentaires</td>
                                             <td class="text-end fw-bold">
                                                 {{ number_format($overtimeEarnings, 2, ',', ' ') }}
                                             </td>
@@ -289,7 +289,7 @@
                                     <div class="row">
                                         <div class="col-12">
                                             <p class="text-muted small mt-2">
-                                                Net à payer calculé : Salaire Brut - Total des Retenues + Autres Indemnités
+                                                Montant total net à payer calculé en Ariary 
                                             </p>
                                         </div>
                                     </div>

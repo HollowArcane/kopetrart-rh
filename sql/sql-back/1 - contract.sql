@@ -60,7 +60,7 @@
         UNIQUE(first_name, last_name),
         date_birth DATE NOT NULL,
         -- denormalization
-        d_id_mvt_staff_contract INT REFERENCES staff_contract(id) ON DELETE SET NULL, -- references mvt_staff_contract.id
+        d_id_mvt_staff_contract INT REFERENCES mvt_staff_contract(id) ON DELETE SET NULL, -- references mvt_staff_contract.id
         d_staff_status INT REFERENCES staff_status(id) ON DELETE SET NULL, -- references mvt_staff_contract and mvt_contract_breach, null means has not been hired yet
         d_salary NUMERIC(14, 2), -- references mvt_staff_contract.salary or mvt_staff_promotion.salary
         d_id_staff_position INT REFERENCES staff_position(id) ON DELETE SET NULL, -- references mvt_staff_contract.position or mvt_staff_promotion.position
@@ -539,6 +539,3 @@
         (12, 'Représentation légale et institutionnelle'),
         (12, 'Arbitrage des décisions majeures'),
         (12, 'Développement et croissance de l''entreprise');
-
-
-INSERT INTO staff(first_name, last_name, email, date_birth) VALUES('John', 'Doe', 'john@gmail.com', '2004-01-01');

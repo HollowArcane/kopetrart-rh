@@ -145,7 +145,6 @@ class ContractBreachController extends Controller
             return abort(400, 'Invalid operation');
         }
 
-        $contract_breach->date_target = (new DateTime())->format('Y-m-d');
         $contract_breach->save();
 
         return redirect('/contract-breach')->with('success', 'Rupture de contrat validée avec succès');

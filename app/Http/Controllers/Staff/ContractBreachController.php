@@ -172,7 +172,8 @@ class ContractBreachController extends Controller
         $salaries = [
             'salary_notice' => ContractBreach::read_notice_salary_bonus($today, $date_expected, $id_contract_breach_type, $staff->id),
             'salary_contract' => ContractBreach::read_contract_salary_bonus($date_expected, $staff),
-            'salary_vacation' => StaffVacation::read_vacation_salary_bonus($today, $staff)
+            'salary_vacation' => StaffVacation::read_vacation_salary_bonus($today, $staff),
+            'vacation_available' => StaffVacation::read_vacation_available($today, $staff)
         ];
 
         if($comment_status == 'danger' /* Motif Grave */ || $id_contract_breach_type == 1 /* Démission */)

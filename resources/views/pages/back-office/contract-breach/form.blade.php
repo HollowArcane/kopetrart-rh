@@ -10,6 +10,7 @@
     @include('includes.message')
 
     <x-modal.main name="modal" type="info" title="Information">
+        <p> <strong> Congé Disponible: </strong > <span id="vacation-available"> 0 </span> Jours </p>
         <h5 class="mb-3"> Les montants suivant seront versés à {{ $staff->first_name }} {{ $staff->last_name }} </h5>
         <table class="w-100">
             <tbody>
@@ -19,7 +20,7 @@
                 </tr>
                 <tr>
                     <th> Indemnité compensatrice de préavis: </th>
-                    <td align="right"> <span id="salary-notice"> 0 </span> </td>
+                    <td align="right"> <span id="salary-notice" class="{{ $type == 1 /* Démission */ ? 'text-danger': '' }}"> 0 </span> </td>
                 </tr>
                 <tr>
                     <th> Indemnité de congés payés: </th>
@@ -112,7 +113,7 @@ function fetchSalary()
         {
             const id = key.replace('_', '-');
             const span = document.getElementById(id);
-            span.textContent = formatNumber(data[key]);
+            span.textContent = formatNumber(Math.abs(data[key]));
             total += data[key];
         }
 
@@ -122,6 +123,9 @@ function fetchSalary()
             const span = document.getElementById('salary-more');
             span.textContent = formatNumber(salaryAdditional.value);
         }
+
+        const s0 = document.getElementById('vacation-available');
+        s0.textContent = data.vacation_available;
 
         const span = document.getElementById('salary-total');
         span.textContent = formatNumber(total);
@@ -134,6 +138,10 @@ function fetchSalary()
 }
 
 button.onclick = fetchSalary;
+
+dateSource.onchange = e => {
+    dateExpected.value = dateSource.value;
+}
 btnSubmit.onclick = e => form.submit();
 
 </script>

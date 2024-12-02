@@ -61,6 +61,26 @@ class PayrollController extends Controller
                 ->whereRaw("DATE_TRUNC('month', date_advance) = DATE_TRUNC('month', '".$referenceDate."'::date)")
                 ->sum('amount');
 
+            // montant imposable
+            $montant_imposable = $salaryBrut->res_monthly_gross_salary - $cnapsOstie->res_cnaps_amount - $cnapsOstie->res_ostie_amount;
+
+            // IRSA
+            $tranche1 = 0;
+
+            $tranche2 = $salaryBrut->res_monthly_gross_salary > 350000 ? (50000 * 0.05) : 0;
+            $tranche3 = $salaryBrut->res_monthly_gross_salary > 400000 ? (100000 * 0.10) : 0;
+            $tranche4 = $salaryBrut->res_monthly_gross_salary > 500000 ? (100000 * 0.15) : 0;
+            $tranche5 = $salaryBrut->res_monthly_gross_salary > 600000 ? ($montant_imposable - 600000) * 0.20 : 0;
+
+            // Total IRSA
+            $total_irsa = $tranche1 + $tranche2 + $tranche3 + $tranche4 + $tranche5;
+
+            // add irsa to total retenue
+            $totalRetenue += $total_irsa;
+
+            // deduce IRSA to net a payer : fix later  
+            $netAPayer -= $total_irsa;    
+            
             $payrollData[] = [
                 'staff' => $staff,
                 'salary_brut' => $salaryBrut,
@@ -73,7 +93,8 @@ class PayrollController extends Controller
                 'monthly_overtime' => $monthlyOvertime,
                 'compensation' => $compensation,
                 'impot_du' => $impotDu,
-                'avance' => $avance
+                'avance' => $avance,
+                'total_irsa' => $total_irsa
             ];
         }
 
@@ -150,6 +171,9 @@ class PayrollController extends Controller
 
         // net a payer
         $net_a_payer = DB::select('SELECT fn_salary_net_a_payer(?, ?)', [$staff->id, $ref_date])[0]->fn_salary_net_a_payer;
+
+        // deduce IRSA to net a payer : fix later
+        $net_a_payer -= $total_irsa;
 
         return view ('payroll.fiche-de-paie',[
             'staff' => $staff,
@@ -243,7 +267,6 @@ class PayrollController extends Controller
         // net a payer
         $net_a_payer = DB::select('SELECT fn_salary_net_a_payer(?, ?)', [$staff->id, $ref_date])[0]->fn_salary_net_a_payer;
 
-        // Generate PDF
         $pdf = \PDF::loadView('payroll.fiche-de-paie-pdf', [
             'staff' => $staff,
             'ref_date' => $ref_date,
@@ -267,10 +290,8 @@ class PayrollController extends Controller
             'net_a_payer' => $net_a_payer
         ]);
 
-        // Generate filename
         $filename = 'Fiche_de_paie_' . $staff->first_name . '_' . $staff->last_name . '_' . $ref_date->format('Y_m') . '.pdf';
 
-        // Download PDF
         return $pdf->download($filename);
     }
 }

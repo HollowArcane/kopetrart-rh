@@ -41,7 +41,7 @@
                         <td>
                             @if (!$staff->is_validated && session('role') == $staff->id_role /* only owner can cancel operation */)
                                 <x-button.delete tooltip="Annuler" href="/contract-breach/{{ $staff->id }}"></x-button.delete>
-                            @elseif (!$staff->is_validated && $staff->date_target != null && (new \DateTime())->format('Y-m-d') == $staff->date_validated && session('role') == 2 /* RH */)
+                            @elseif (!$staff->is_validated && $staff->date_target != null && session('role') == 2 /* RH */)
                                 <x-modal.button type="secondary" tooltip="Mettre à Jour" :target="'modal-'.$staff->id"> <i class="fa-solid fa-check"></i> </x-modal.button>
                             @elseif ($staff->date_target == null && in_array(session('role'), [1 /* PDG */, 3 /* RE */]) && session('role') != $staff->id_role /* only target can validate operation */)
                                 <a class="btn btn-secondary text-primary" tooltip="Valider" href="/contract-breach/{{ $staff->id }}"> <i class="fa-solid fa-check"></i> </a>

@@ -310,9 +310,3 @@
     INSERT INTO contract_breach_type(id, label) VALUES(2, 'Licenciement');
     INSERT INTO contract_breach_type(id, label) VALUES(3, 'Mise à la Retraite');
     INSERT INTO contract_breach_type(id, label) VALUES(4, 'Rupture Conventionelle');
-
-
-SELECT * FROM fn_staff_contract_breach_notice_date(1, '2027-01-01');
-insert into contract_breach (id_mvt_staff_contract, id_contract_breach_type, date_source, date_validated, comment, salary_bonus, id_role) values (2, 2, '2024-11-27', '2024-12-02', 'asfoa`k^*kwrioha', 10000, 1);
-
-SELECT f_b_salary_bonus('2024-11-27', '2024-12-05', 2, 1);

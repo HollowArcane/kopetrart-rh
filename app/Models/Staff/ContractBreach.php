@@ -16,7 +16,10 @@ class ContractBreach extends Model
 
     public static function read_details()
     {
-        return DB::table('v_staff_contract_breach');
+        return DB::table('v_staff_contract_breach')
+                        ->where('is_validated', '=', false)
+                        ->unionAll(DB::table('v_staff_contract_breach')
+                                        ->where('is_validated', '=', true));
     }
 
     public static function read_current_contract_breach(string $id_staff)

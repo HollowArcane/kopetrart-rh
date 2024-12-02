@@ -86,8 +86,8 @@
                     <h3> Progression Contractuelle </h3>
                 </div>
                 <div class="text-end">
-                    <a data-mdb-tooltip-init title="Promouvoir" href="#" class="btn btn-secondary"> <i class="fa fa-star"></i> </a>
-                    <a data-mdb-tooltip-init title="Renouveler Contrat" href="#" class="btn btn-secondary"> <i class="fa fa-file-contract"></i> </a>
+                    <a data-mdb-tooltip-init title="Promouvoir" href="/staff-promotion/{{ $staff->id }}/create" class="btn btn-secondary"> <i class="fa fa-star"></i> </a>
+                    <a data-mdb-tooltip-init title="Renouveler Contrat" href="/staff/{{ $staff->id }}/contract" class="btn btn-secondary"> <i class="fa fa-file-contract"></i> </a>
                 </div>
             </div>
         @endif

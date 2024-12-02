@@ -338,3 +338,13 @@
         performance,
         performance_bonus
     FROM performance_data;
+
+
+-- SELECT
+--     s.id,
+--     cb.date_validated,
+--     SUM(cb.salary_bonus) AS salary_bonus,
+-- FROM 
+--     staff s
+-- JOIN mvt_staff_contract msc ON s.id = msc.id_staff
+-- JOIN contract_breach cb ON s.id = cb.id_staff

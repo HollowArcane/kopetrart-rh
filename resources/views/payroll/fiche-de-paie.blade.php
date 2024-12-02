@@ -111,7 +111,7 @@
                                             ['label' => 'Valeur', 'amount' => $staff->d_salary],
                                             ['label' => 'Absences déductibles', 'amount' => $daily_rate],
                                             ['label' => 'Primes de rendement', 'amount' => $daily_rate],
-                                            ['label' => 'Primes d\'ancienneté', 'amount' => $daily_rate],
+                                            ['label' => 'Primes d\'ancienneté', 'amount' => $seniority_bonus],
                                             [
                                                 'label' => 'Heures supplémentaires majorées de 30%', 
                                                 'hours' => $monthly_overtime && $monthly_overtime->total_first_8_hours ? $monthly_overtime->total_first_8_hours : 0,
@@ -179,15 +179,16 @@
                                     </tbody>
                                     <tfoot>
                                         <tr class="table-secondary">
-                                            <td colspan="3" class="fw-bold text-end">Total Gains</td>
+                                            
+                                            <td colspan="3" class="fw-bold text-end">Heures Supp</td>
                                             <td class="text-end fw-bold">
-                                                {{ number_format($totalEarnings, 2, ',', ' ') }}
+                                                {{ number_format($overtimeEarnings, 2, ',', ' ') }}
                                             </td>
                                         </tr>
                                         <tr class="table-info">
-                                            <td colspan="3" class="fw-bold text-end">Heures Supplémentaires</td>
+                                            <td colspan="3" class="fw-bold text-end">Salaire brut</td>
                                             <td class="text-end fw-bold">
-                                                {{ number_format($overtimeEarnings, 2, ',', ' ') }}
+                                                {{ number_format($brute_salary, 2, ',', ' ') }}
                                             </td>
                                         </tr>
                                     </tfoot>
@@ -240,6 +241,12 @@
                                                 </td>
                                             </tr>
                                         @endforeach
+                                        <tr class="table-info">
+                                            <td><strong>Montant imposable</strong></td>
+                                            <td class="text-end fw-bold">
+                                                {{ number_format($montant_imposable, 2, ',', ' ') }}
+                                            </td>
+                                        </tr>
                                         <tr class="table-danger">
                                             <td><strong>TOTAL IRSA</strong></td>
                                             <td class="text-end fw-bold">
@@ -277,10 +284,10 @@
                                     </div>
                                     <hr>
                                     <div class="row">
-                                        <div class="col-8">
+                                        <div class="col-6">
                                             <h4 class="text-primary">Net à Payer</h4>
                                         </div>
-                                        <div class="col-4 text-end">
+                                        <div class="col-6 text-end">
                                             <h4 class="text-success fw-bold">
                                                 {{ number_format($net_a_payer, 2, ',', ' ') }} Ar
                                             </h4>

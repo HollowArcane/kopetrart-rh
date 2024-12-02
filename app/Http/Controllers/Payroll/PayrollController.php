@@ -175,6 +175,11 @@ class PayrollController extends Controller
         // deduce IRSA to net a payer : fix later
         $net_a_payer -= $total_irsa;
 
+        // retrieve the seniority bonus amount from `v_get_seniority_bonus_per_month`
+        $seniority_bonus = DB::table('v_get_seniority_bonus_per_month')
+            ->where('staff_id', $staff->id)
+            ->sum('seniority_bonus');
+
         return view ('payroll.fiche-de-paie',[
             'staff' => $staff,
             'ref_date' => $ref_date,
@@ -195,7 +200,8 @@ class PayrollController extends Controller
             'total_irsa' => $total_irsa,
             'total_retenue' => $total_retenue,
             'compensation' => $compensation,
-            'net_a_payer' => $net_a_payer
+            'net_a_payer' => $net_a_payer,
+            'seniority_bonus' => $seniority_bonus
         ]); 
     }
 

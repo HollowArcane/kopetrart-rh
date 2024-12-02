@@ -154,9 +154,15 @@ use App\Http\Controllers\Payroll\PayrollController;
     Route::get('/contract-breach', [ContractBreachController::class, 'index']);
     Route::get('/contract-breach/{id}', [ContractBreachController::class, 'accept']);
     Route::get('/contract-breach/{id}/pdf', [ContractBreachController::class, 'pdf']);
+    Route::get('/contract-breach/{id}/pdf-detail', [ContractBreachController::class, 'pdf_detail']);
+    Route::delete('/contract-breach/{id}', [ContractBreachController::class, 'delete']);
+
+    Route::get('/payroll/export-pdf/{id}/{today}', [ContractBreachController::class, 'pdf_payment']);
+
+
     Route::get('/staff/{id}/contract-breach/create/{type}', [ContractBreachController::class, 'create']);
     Route::post('/staff/{id}/contract-breach', [ContractBreachController::class, 'store']);
-    Route::delete('/contract-breach/{id}', [ContractBreachController::class, 'delete']);
+
     Route::get('/staff/{id}/contract-breach/{id_contract_breach_type}/salary/{today}/{date_expected}/{comment_status}', [ContractBreachController::class, 'salary_bonus']);
 }
 
@@ -189,8 +195,7 @@ use App\Http\Controllers\Payroll\PayrollController;
     Route::post('front/test/{id_test}/{id_cv}', [App\Http\Controllers\FrontOffice\TestController::class, 'update']);
 }
 
-
-{
+{ // ETAT DE PAIE
     Route::resource('absences', AbsenceController::class);
     Route::resource('staff_overtimes', StaffOvertimeController::class);
     Route::resource('staff_compensations', StaffCompensationController::class);

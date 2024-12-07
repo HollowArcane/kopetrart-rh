@@ -10,12 +10,14 @@
                 {{ $slot }}
             </div>
 
-            <div class="modal-footer">
-                <div class="w-100 d-flex justify-content-center">
-                    <button id="{{ $name }}-btn-cancel" type="button" class="m-2 btn btn-outline-{{ $type ?? 'primary' }}" data-mdb-ripple-init data-mdb-dismiss="modal"> Annuler </button>
-                    <button id="{{ $name }}-btn-submit" type="button" class="m-2 btn btn-{{ $type ?? 'primary' }}" data-mdb-ripple-init> Valider </button>
+            @if ($footer ?? true === true)
+                <div class="modal-footer">
+                    <div class="w-100 d-flex justify-content-center">
+                        <button id="{{ $name }}-btn-cancel" type="button" class="m-2 btn btn-outline-{{ $type ?? 'primary' }}" data-mdb-ripple-init data-mdb-dismiss="modal"> Annuler </button>
+                        <button id="{{ $name }}-btn-submit" type="button" class="m-2 btn btn-{{ $type ?? 'primary' }}" data-mdb-ripple-init> Valider </button>
+                    </div>
                 </div>
-            </div>
+            @endif
         </div>
     </div>
 </div>

@@ -10,6 +10,7 @@ use App\Models\Staff\StaffVacation;
 use Barryvdh\DomPDF\Facade\Pdf;
 use DateTime;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\ValidationException;
 
 class ContractBreachController extends Controller
@@ -18,6 +19,7 @@ class ContractBreachController extends Controller
     private $index_view = 'pages.back-office.contract-breach.index';
     private $form_view = 'pages.back-office.contract-breach.form';
     private $pdf_view = 'pages.back-office.contract-breach.pdf';
+    private $pdf_detail_view = 'pages.back-office.contract-breach.pdf-general';
 
     public static function url(string $id_staff)
     { return '/staff/'.$id_staff.'/contract-breach'; }
@@ -182,15 +184,78 @@ class ContractBreachController extends Controller
 
     public function pdf($id)
     {
+        if(!in_array(session('role'), [1 /* PDF */, 2 /* RH */, 3 /* RE */]))
+        {
+            return abort(404, 'Resource not found');
+        }
+
         $staff = ContractBreach::read_details()
                     ->where('id', '=', $id)
                     ->first();
+
         if($staff == null)
-        { abort(404, 'Resource not found'); }
+        {
+            abort(404, 'Resource not found');
+        }
+
         $pdf = Pdf::loadView($this->pdf_view, [
             'staff' => $staff,
             'tasks' => StaffPositionTask::read_by_position($staff->d_id_staff_position)->get()
         ]);
         return $pdf->stream('certificat_contract.pdf');
+    }
+
+    public function pdf_detail($id)
+    {
+        if(!in_array(session('role'), [1 /* PDF */, 2 /* RH */, 3 /* RE */]))
+        {
+            return abort(404, 'Resource not found');
+        }
+
+        $staff = ContractBreach::read_details()
+                    ->where('id', '=', $id)
+                    ->first();
+
+        if($staff == null)
+        {
+            abort(404, 'Resource not found');
+        }
+
+        $months = [
+            '01' => 'Janvier',
+            '02' => 'Février',
+            '03' => 'Mars',
+            '04' => 'Avril',
+            '05' => 'Mai',
+            '06' => 'Juin',
+            '07' => 'Juillet',
+            '08' => 'Août',
+            '09' => 'Septembre',
+            '10' => 'Octobre',
+            '11' => 'Novembre',
+            '12' => 'Décembre'
+        ];
+
+        $today = new \DateTime($staff->date_validated);
+        $salaries = [];
+        for($i = 0; $i < 12; $i++)
+        {
+            $date = $today->sub(new \DateInterval('P1M'));
+            $date_format = $months[$date->format('m')].' '.$date->format('Y');
+            $salaries[$date_format] = DB::select('SELECT * FROM fn_get_salary_brut(?, ?)', [$staff->id_staff, $date->format('Y-m-d')])[0]?->res_monthly_gross_salary;
+        }
+        $salaries = array_reverse($salaries);
+
+        $pdf = Pdf::loadView($this->pdf_detail_view, [
+            'staff' => $staff,
+            'salaries' => $salaries
+        ]);
+        return $pdf->stream('attestation_pole_emploi.pdf');
+    }
+
+    public function pdf_payment($id, $today)
+    {
+        session(['ref_date' => $today]);
+        return redirect('/payroll/export-pdf/'.$id);
     }
 }

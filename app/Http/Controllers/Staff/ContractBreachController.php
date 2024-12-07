@@ -22,7 +22,7 @@ class ContractBreachController extends Controller
 
     public function index()
     {
-        if(session('role') != 1 /* PDG */ && session('role') != 3 /* RE */)
+        if(session('role') != 1 /* PDG */ && session('role') != 2 /* RH */ && session('role') != 3 /* RE */)
         {
             return abort(400, 'Invalid operation');
         }
